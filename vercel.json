@@ -2,6 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "buildCommand": "node build.js",
   "outputDirectory": ".",
   "headers": [
     {
@@ -76,6 +77,7 @@
     }
   ],
   "rewrites": [
+    { "source": "/f2c-sw.js", "destination": "/assets/f2c-sw.js" },
     { "source": "/images/(.*)", "destination": "/assets/framerusercontent.com/images/$1" },
     { "source": "/sites/(.*)", "destination": "/assets/framerusercontent.com/sites/$1" },
     { "source": "/modules/(.*)", "destination": "/assets/framerusercontent.com/modules/$1" },

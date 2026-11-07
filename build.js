@@ -8,22 +8,25 @@ const ROOT_DIR = fs.existsSync(path.join(__dirname, 'index.html')) ? __dirname :
 
 console.log('--- Anamorph Production Build & Verification ---');
 
-// Ensure assets/f2c-sw.js is synchronized with root f2c-sw.js
+// Ensure f2c-sw.js is synchronized to all locations where Vercel might resolve it
 try {
   const rootSw = path.join(ROOT_DIR, 'f2c-sw.js');
-  const assetsSw = path.join(ROOT_DIR, 'assets', 'f2c-sw.js');
+  const assetsSw1 = path.join(ROOT_DIR, 'assets', 'f2c-sw.js');
+  const assetsSw2 = path.join(ROOT_DIR, 'assets', 'framerusercontent.com', 'assets', 'f2c-sw.js');
   if (fs.existsSync(rootSw)) {
-    fs.copyFileSync(rootSw, assetsSw);
-    console.log('Synchronized assets/f2c-sw.js');
+    fs.copyFileSync(rootSw, assetsSw1);
+    fs.copyFileSync(rootSw, assetsSw2);
+    console.log('Synchronized f2c-sw.js copies');
   }
 } catch (e) {
-  console.warn('Notice: could not sync assets/f2c-sw.js:', e.message);
+  console.warn('Notice: could not sync f2c-sw.js:', e.message);
 }
 
 const criticalFiles = [
   'index.html',
   'f2c-sw.js',
   path.join('assets', 'f2c-sw.js'),
+  path.join('assets', 'framerusercontent.com', 'assets', 'f2c-sw.js'),
   path.join('work', 'index.html'),
   path.join('work', 'citadel', 'index.html'),
   path.join('work', 'flora', 'index.html'),

@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const ROOT_DIR = path.resolve(__dirname, '..');
 
 console.log('--- Anamorph Production Build Verification ---');
 
@@ -30,7 +31,7 @@ const requiredFiles = [
 let hasErrors = false;
 
 for (const file of requiredFiles) {
-  const fullPath = path.join(__dirname, file);
+  const fullPath = path.join(ROOT_DIR, file);
   if (!fs.existsSync(fullPath)) {
     console.error(`MISSING: ${file}`);
     hasErrors = true;
@@ -41,7 +42,7 @@ for (const file of requiredFiles) {
 }
 
 // Check assets directory
-const assetsDir = path.join(__dirname, 'assets');
+const assetsDir = path.join(ROOT_DIR, 'assets');
 if (!fs.existsSync(assetsDir)) {
   console.error('MISSING: assets directory');
   hasErrors = true;

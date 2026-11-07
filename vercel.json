@@ -1,10 +1,35 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": true,
-  "buildCommand": "node build.js",
+  "trailingSlash": false,
   "outputDirectory": ".",
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/f2c-sw.js",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/javascript; charset=utf-8"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    },
     {
       "source": "/assets/(.*)",
       "headers": [
@@ -26,6 +51,10 @@
     {
       "source": "/(.*).mp4",
       "headers": [
+        {
+          "key": "Content-Type",
+          "value": "video/mp4"
+        },
         {
           "key": "Accept-Ranges",
           "value": "bytes"
@@ -51,10 +80,8 @@
     { "source": "/sites/(.*)", "destination": "/assets/framerusercontent.com/sites/$1" },
     { "source": "/modules/(.*)", "destination": "/assets/framerusercontent.com/modules/$1" },
     { "source": "/cms/(.*)", "destination": "/assets/framerusercontent.com/cms/$1" },
-    { "source": "/assets/framerusercontent.com/(.*)", "destination": "/assets/framerusercontent.com/$1" },
-    { "source": "/assets/app.framerstatic.com/(.*)", "destination": "/assets/app.framerstatic.com/$1" },
-    { "source": "/assets/(.*)", "destination": "/assets/framerusercontent.com/assets/$1" },
     { "source": "/third-party-assets/(.*)", "destination": "/assets/framerusercontent.com/third-party-assets/$1" },
+    { "source": "/assets/([^/]+)", "destination": "/assets/framerusercontent.com/assets/$1" },
     { "source": "/(chunk-.*\\.mjs)", "destination": "/assets/app.framerstatic.com/$1" },
     { "source": "/(editorbar\\..*)", "destination": "/assets/app.framerstatic.com/$1" },
     { "source": "/(EditButton-.*\\.mjs)", "destination": "/assets/app.framerstatic.com/$1" },

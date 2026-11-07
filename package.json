@@ -4,12 +4,11 @@
   "private": true,
   "description": "Anamorph™ — Noah Reyes, Video Editor Portfolio (Framer Template)",
   "type": "module",
-  "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js",
-    "build": "node build.js",
-    "preview": "node server.js"
+    "dev": "node scripts/dev-server.js",
+    "start": "node scripts/dev-server.js",
+    "build": "node scripts/build.js",
+    "preview": "node scripts/dev-server.js"
   },
   "keywords": [
     "framer",

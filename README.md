@@ -33,6 +33,8 @@ npm run build
 ```
 
 
+
+
 ## Deployment to Vercel
 
 The project is fully pre-configured for Vercel deployment via `vercel.json`:

@@ -32,6 +32,7 @@ Open your browser at [http://localhost:3000](http://localhost:3000).
 npm run build
 ```
 
+
 ## Deployment to Vercel
 
 The project is fully pre-configured for Vercel deployment via `vercel.json`:
